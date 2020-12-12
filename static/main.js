@@ -41,7 +41,7 @@ const app = new Vue({
         },
     },
     created() {
-        this.socket = io('http://localhost:3000');
+        this.socket = io('http://localhost:8000');
         this.socket.on('move', (payload) => {
             this.receivedMove(payload);
         });
