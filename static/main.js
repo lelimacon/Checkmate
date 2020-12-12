@@ -23,20 +23,17 @@ const app = new Vue({
             this.moves.push(move);
         },
 
-        sendChat() {
-            if (!this.validateChat())
+        sendMessage() {
+            if (!this.validateMessage())
                 return;
 
             this.socket.emit('chat', this.message);
             this.text = '';
         },
-        validateChat() {
+        validateMessage() {
             return this.name.length > 0 && this.message.length > 0;
         },
         receivedMessage(message) {
-            this.messages.push(message);
-        },
-        receivedChat(message) {
             this.messages.push(message);
         },
     },
@@ -47,9 +44,6 @@ const app = new Vue({
         });
         this.socket.on('message', (payload) => {
             this.receivedMessage(payload);
-        });
-        this.socket.on('chat', (payload) => {
-            this.receivedChat(payload);
         });
     }
 })
