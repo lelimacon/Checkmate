@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AppGateway } from './app.gateway';
+import { ConfigModule } from '@nestjs/config';
+import { EventsModule } from './events/events.module';
+import { GameModule } from './game/game.module';
 
 @Module({
-  imports: [],
-  controllers: [],
-  providers: [AppGateway],
+	imports: [ConfigModule.forRoot({ isGlobal: true }), EventsModule, GameModule],
 })
 export class AppModule {}
